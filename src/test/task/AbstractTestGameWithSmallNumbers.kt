@@ -1,7 +1,7 @@
 package tests
 
 import board.GameBoard
-import task.createGameBoard
+import board.createGameBoard
 
 open class TestGameWithSmallNumbers {
     val width = 4

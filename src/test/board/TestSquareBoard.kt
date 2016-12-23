@@ -1,10 +1,8 @@
-package tests
-
 import board.Cell
 import board.Direction
+import board.createSquareBoard
 import org.junit.Assert
 import org.junit.Test
-import task.createSquareBoard
 import kotlin.comparisons.compareBy
 import kotlin.comparisons.thenBy
 

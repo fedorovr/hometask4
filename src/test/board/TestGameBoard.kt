@@ -1,8 +1,8 @@
 package tests
 
+import board.createGameBoard
 import org.junit.Assert
 import org.junit.Test
-import task.createGameBoard
 
 class TestGameBoard {
     @Test

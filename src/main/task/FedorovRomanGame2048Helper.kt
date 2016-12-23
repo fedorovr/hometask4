@@ -14,5 +14,21 @@ then the function moveAndMergeEqual transforms the input in the following way:
 Examples and tests in TestMoveAndMergeValues.kt
 */
 
-fun <T : Any> List<T?>.moveAndMergeEqual(double: (T) -> T): List<T> =
-        TODO()
+fun <T : Any> List<T?>.moveAndMergeEqual(double: (T) -> T): List<T> {
+    var pointer = 0
+    val result = mutableListOf<T>()
+    val withoutNulls = this.filterNotNull()
+    while (pointer < withoutNulls.size - 1) {
+        if (withoutNulls[pointer] == withoutNulls[pointer + 1]) {
+            result.add(double(withoutNulls[pointer]))
+            pointer += 1
+        } else {
+            result.add(withoutNulls[pointer])
+        }
+        pointer += 1
+    }
+    if (pointer == withoutNulls.size - 1) {
+        result.add(withoutNulls[pointer])
+    }
+    return result
+}
