@@ -21,11 +21,11 @@ fun <T : Any> List<T?>.moveAndMergeEqual(double: (T) -> T): List<T> {
     while (pointer < withoutNulls.size - 1) {
         if (withoutNulls[pointer] == withoutNulls[pointer + 1]) {
             result.add(double(withoutNulls[pointer]))
-            pointer += 1
+            pointer++
         } else {
             result.add(withoutNulls[pointer])
         }
-        pointer += 1
+        pointer++
     }
     if (pointer == withoutNulls.size - 1) {
         result.add(withoutNulls[pointer])

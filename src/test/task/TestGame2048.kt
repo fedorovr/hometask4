@@ -1,4 +1,4 @@
-package tests
+package task
 
 import board.Direction
 import board.Direction.*
@@ -27,7 +27,7 @@ class TestGame2048: TestGame() {
     @Test
     fun testCannotMove() {
         while (values.filterNotNull().size < 16) {
-            for (direction in Direction.values()) {
+            for (direction in values()) {
                 game.processMove(direction)
             }
         }

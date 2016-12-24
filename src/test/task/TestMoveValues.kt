@@ -1,4 +1,4 @@
-package tests
+package task
 
 import board.Direction
 import board.Direction.DOWN
@@ -6,6 +6,7 @@ import board.Direction.RIGHT
 import board.reversed
 import org.junit.Assert
 import org.junit.Test
+import task.TestGameWithSmallNumbers
 import task.moveValues
 
 class TestMoveValues : TestGameWithSmallNumbers() {

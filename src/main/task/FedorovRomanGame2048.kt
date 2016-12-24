@@ -79,12 +79,12 @@ Use the moveValuesInRowOrColumn function above.
 Examples and tests in TestMoveValues.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
-    val field_range = 1..FIELD_SIZE
-    val field_range_rev = field_range.reversed()
+    val fieldRange = 1..FIELD_SIZE
+    val fieldRangeRev = fieldRange.reversed()
     return when (direction) {
-        Direction.UP -> field_range.map { getColumn(field_range, it) }.map { moveValuesInRowOrColumn(it) }.any { it }
-        Direction.DOWN -> field_range.map { getColumn(field_range_rev, it) }.map { moveValuesInRowOrColumn(it) }.any { it }
-        Direction.LEFT -> field_range.map { getRow(it, field_range) }.map { moveValuesInRowOrColumn(it) }.any { it }
-        Direction.RIGHT -> field_range.map { getRow(it, field_range_rev) }.map { moveValuesInRowOrColumn(it) }.any { it }
+        Direction.UP -> fieldRange.map { getColumn(fieldRange, it) }.map { moveValuesInRowOrColumn(it) }.any { it }
+        Direction.DOWN -> fieldRange.map { getColumn(fieldRangeRev, it) }.map { moveValuesInRowOrColumn(it) }.any { it }
+        Direction.LEFT -> fieldRange.map { getRow(it, fieldRange) }.map { moveValuesInRowOrColumn(it) }.any { it }
+        Direction.RIGHT -> fieldRange.map { getRow(it, fieldRangeRev) }.map { moveValuesInRowOrColumn(it) }.any { it }
     }
 }

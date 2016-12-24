@@ -1,4 +1,4 @@
-package tests
+package task
 
 import board.Direction
 import board.Direction.*

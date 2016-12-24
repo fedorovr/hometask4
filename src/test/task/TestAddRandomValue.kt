@@ -1,7 +1,8 @@
-package tests
+package task
 
 import org.junit.Assert
 import org.junit.Test
+import task.TestGameWithSmallNumbers
 import task.addRandomValue
 
 class TestAddRandomValue : TestGameWithSmallNumbers() {

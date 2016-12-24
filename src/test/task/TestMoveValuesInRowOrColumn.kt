@@ -1,9 +1,10 @@
-package tests
+package task
 
 import board.Cell
 import board.SquareBoard
 import org.junit.Assert
 import org.junit.Test
+import task.TestGameWithSmallNumbers
 import task.moveValuesInRowOrColumn
 
 class TestMoveValuesInRowOrColumn : TestGameWithSmallNumbers() {

@@ -10,6 +10,7 @@ If the game of fifteen is started with the wrong parity, you can't get the corre
   (numbers sorted in the right order, empty cell at last).
 Thus the initial permutation should be correct.
  */
-fun countParity(permutation: List<Int>): Boolean {
-    TODO()
-}
+
+// This is quadratic version, but pretty simple and short :)
+fun countParity(permutation: List<Int>): Boolean =
+    permutation.mapIndexed { idx, value -> permutation.drop(idx).filter { it < value }.size }.sum() % 2 == 0
