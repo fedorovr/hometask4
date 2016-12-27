@@ -41,12 +41,13 @@ class GameOfFifteen : Game {
 
     private fun GameBoard<Int?>.moveValuesGameOf15(direction: Direction) {
         val fieldRangeRev = fieldRange.reversed()
-        when (direction) {
-            Direction.UP -> fieldRange.map { getColumn(fieldRange, it) }.map { moveValuesInRowOrColumnGameOf15(it) }
-            Direction.DOWN -> fieldRange.map { getColumn(fieldRangeRev, it) }.map { moveValuesInRowOrColumnGameOf15(it) }
-            Direction.LEFT -> fieldRange.map { getRow(it, fieldRange) }.map { moveValuesInRowOrColumnGameOf15(it) }
-            Direction.RIGHT -> fieldRange.map { getRow(it, fieldRangeRev) }.map { moveValuesInRowOrColumnGameOf15(it) }
+        val getColumnOrRow: (Int) -> List<Cell> = when (direction) {
+            Direction.UP -> { c -> getColumn(fieldRange, c) }
+            Direction.DOWN -> { c -> getColumn(fieldRangeRev, c) }
+            Direction.LEFT -> { r -> getRow(r, fieldRange) }
+            Direction.RIGHT -> { r -> getRow(r, fieldRangeRev) }
         }
+        fieldRange.map { getColumnOrRow(it) }.forEach { moveValuesInRowOrColumnGameOf15(it) }
     }
 
     private fun GameBoard<Int?>.moveValuesInRowOrColumnGameOf15(rowOrColumn: List<Cell>) {

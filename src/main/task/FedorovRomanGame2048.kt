@@ -81,10 +81,11 @@ Examples and tests in TestMoveValues.
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
     val fieldRange = 1..FIELD_SIZE
     val fieldRangeRev = fieldRange.reversed()
-    return when (direction) {
-        Direction.UP -> fieldRange.map { getColumn(fieldRange, it) }.map { moveValuesInRowOrColumn(it) }.any { it }
-        Direction.DOWN -> fieldRange.map { getColumn(fieldRangeRev, it) }.map { moveValuesInRowOrColumn(it) }.any { it }
-        Direction.LEFT -> fieldRange.map { getRow(it, fieldRange) }.map { moveValuesInRowOrColumn(it) }.any { it }
-        Direction.RIGHT -> fieldRange.map { getRow(it, fieldRangeRev) }.map { moveValuesInRowOrColumn(it) }.any { it }
+    val getColumnOrRow: (Int) -> List<Cell> = when (direction) {
+        Direction.UP -> { c -> getColumn(fieldRange, c) }
+        Direction.DOWN -> { c -> getColumn(fieldRangeRev, c) }
+        Direction.LEFT -> { r -> getRow(r, fieldRange) }
+        Direction.RIGHT -> { r -> getRow(r, fieldRangeRev) }
     }
+    return fieldRange.map { getColumnOrRow(it) }.map { moveValuesInRowOrColumn(it) }.any { it }
 }
